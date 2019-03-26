@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html class="st-layout ls-top-navbar-large ls-bottom-footer show-sidebar sidebar-l3" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Performance Review</title>
+  <!-- Template CSS -->
+  <link rel="stylesheet" type="text/css" href="css/all.css">
+  <link rel="stylesheet" type="text/css" href="css/app.css">
+  <link rel="stylesheet" type="text/css" href="css/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/animate.css">
+  <style>
+    li,
+    p,
+    div {
+      border-style: none !important;
+    }
+
+    @media print {
+      /*
+        @page {
+
+            margin: 20px;
+        }*/
+      @page {
+        margin-left: 15mm;
+        margin-right: 15mm;
+      }
+      body {
+        width: 180mm;
+      }
+      body * {
+        display: block;
+      }
+      .container-fluid,
+      .st-content,
+      .st-content-inner,
+      body {
+        float: none !important;
+      }
+      .break_after,
+      .break_page {
+        page-break-after: always !important;
+      }
+
+      .perc_label {
+        display: inline;
+      }
+      /*
+        .break_before {
+            page-break-before: always !important;
+        }
+        */
+    }
+
+    .container-fluid,
+    .st-content,
+    .st-content-inner,
+    body {
+      float: none !important;
+    }
+
+    h5.rev {
+      font-size: medium !important;
+    }
+
+    body {
+      overflow-y: visible;
+    }
+
+    #inner {
+      overflow-y: hidden;
+    }
+  </style>
+</head>
+
+<body class="login" id="print_wrapper" style="height: auto; overflow-y: auto">
+  <script>
+    var html = localStorage.getItem("html")
+    localStorage.removeItem("html")
+
+    //console.log(html)
+    document.getElementById("print_wrapper").innerHTML = html
+    window.focus();
+    window.print();
+    /*
+    setTimeout(function () {*/
+    var isIE = /*@cc_on!@*/ false || !!document.documentMode;
+    if (!isIE) {
+      // window.history.back();
+    }
+    /*
+    }, 2000)*/
+  </script>
+  <script type="text/javascript" src="js/all.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html class="st-layout ls-top-navbar-large ls-bottom-footer show-sidebar sidebar-l3" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title id="indexTitle"></title>
+  <link rel='shortcut icon' type='image/x-icon' href='images/applied.ico' />
+  <!-- Template CSS -->
+  <link rel="stylesheet" type="text/css" href="css/all.css">
+  <link rel="stylesheet" type="text/css" href="css/app.css">
+
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-toggle.min.css">
+  <link rel="stylesheet" type="text/css" href="css/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="js/pace/pace.min.css">
+
+  <!-- codebase css per calendario -->
+  <link rel="stylesheet" type="text/css" href="js/codebase/dhtmlxscheduler.css">
+  <link rel="stylesheet" type="text/css" href="js/codebase/dhtmlxscheduler_flat.css">
+  <link rel="stylesheet" type="text/css" href="css/iziModal.css">
+  <!-- SKIN CUSTOM -->
+  <link rel="stylesheet" type="text/css" href="css/customs/custom_skin.css">
+
+  <script>
+    var _learnerId;
+    var _learnerName;
+  </script>
+  <!-- Librerie Gestione Scrom -->
+  <script src="js/bkmscorm/bkm.scorm.2004.init.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/bkmscorm/bkm.scorm.2004.doc.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/bkmscorm/bkm.scorm.2004.comm.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/bkmscorm/bkm.scorm.2004.api.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/bkmscorm/bkm.scorm.1.2.api.js" type="text/javascript" charset="utf-8"></script>
+
+  <!-- librerie CSS JQWidget -->
+  <link rel="stylesheet" href="js/jqwidgets/styles/jqx.base.css" type="text/css">
+  <link rel="stylesheet" href="js/jqwidgets/styles/jqx.glacier.css" type="text/css">
+  <!-- CSS summernote per html editor-->
+  <link rel="stylesheet" href="js/summernote/summernote.css" type="text/css">
+
+</head>
+
+<body style="z-index: 0;">
+  <div id="app"></div>
+
+  <script src="js/survey/survey.bootstrap.js"></script>
+  <script type="text/javascript" src="js/all.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="js/iziModal.js"></script>
+  <script src="js/bootstrap-toggle.min.js"></script>
+  <!-- Librerie Loki -->
+  <script src="js/lokijs/lokijs.min.js"></script>
+  <script src="js/lokijs/loki-indexed-adapter.min.js"></script>
+  <!-- Librerie Calendario -->
+  <script src="js/codebase/dhtmlxscheduler.js"></script>
+  <script src="js/codebase/ext/dhtmlxscheduler_timeline.js"></script>
+  <script src="js/codebase/ext/dhtmlxscheduler_tooltip.js"></script>
+  <script src="js/codebase/ext/dhtmlxscheduler_minical.js"></script>
+  <script src="js/codebase/ext/dhtmlxscheduler_quick_info.js"></script>
+  <script src="js/codebase/ext/dhtmlxscheduler_limit.js"></script>
+  <script src="js/codebase/ext/dhtmlxscheduler_year_view.js"></script>
+  <!-- Librerie Survey -->
+  <script src="js/knockout-latest.js"></script>
+
+  <!-- $$$ BUILD COMPILATA $$$ -->
+  <script src="dist/build.js"></script>
+
+  <!-- Librerie JQWidget per Componente Griglia-->
+  <script type="text/javascript" src="js/jqwidgets/jqxcore.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/jqxcheckbox.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/jqxexpander.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/jqxdata.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/jqxbuttons.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/jqxscrollbar.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/jqxmenu.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/jqxlistbox.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/jqxdropdownlist.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/jqxgrid.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/jqxgrid.edit.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/jqxgrid.selection.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/jqxgrid.columnsresize.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/jqxgrid.columnsreorder.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/jqxgrid.filter.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/jqxgrid.sort.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/jqxgrid.pager.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/jqxgrid.grouping.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/jqxdragdrop.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/jqxnumberinput.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/globalization/globalize.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/globalization/globalize.culture.it.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/globalization/globalize.culture.it-IT.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/jqxcalendar.js"></script>
+  <script type="text/javascript" src="js/jqwidgets/jqxdatetimeinput.js"></script>
+  <!-- Librererie summernote JS per html editor -->
+  <script type="text/javascript" src="js/summernote/summernote.js"></script>
+  <script type="text/javascript" src="js/summernote/lang/summernote-it-IT.js"></script>
+  <!-- Librerie per cropper di upload immagine -->
+  <script type="text/javascript" src="js/cropper/croppie.js"></script>
+  <script type="text/javascript" src="js/cropper/dropzone.min.js"></script>
+
+  <script>
+    var colors = {
+      "danger-color": "#e74c3c",
+      "success-color": "#81b53e",
+      "warning-color": "#f0ad4e",
+      "inverse-color": "#2c3e50",
+      "info-color": "#2d7cb5",
+      "default-color": "#6e7882",
+      "default-light-color": "#cfd9db",
+      "purple-color": "#9D8AC7",
+      "mustard-color": "#d4d171",
+      "lightred-color": "#e15258",
+      "body-bg": "#f6f6f6"
+    };
+    var config = {
+      theme: "html",
+      skins: {
+        "default": {
+          "primary-color": "#42a5f5"
+        }
+      }
+    };
+  </script>
+  <!-- Template JS -->
+</body>
+
+</html>
+<!--
+{
+  "presets": [
+    ["es2015", { "modules": false }]
+  ]
+}
+-->

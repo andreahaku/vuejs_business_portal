@@ -1,0 +1,29 @@
+.navbar-brand.navbar-brand-primary,
+.navbar-brand.navbar-brand-primary:hover {
+    background-color: rgb(200, 0, 53);
+}
+
+a#ooh {
+    background-color: inherit;
+    border-color: rgb(200, 0, 53);
+}
+
+a#ooh:hover {
+    background-color: rgb(170, 12, 54);
+    border-color: rgb(200, 0, 53);
+}
+
+.navbar-brand.navbar-brand-primary .logo {
+    width: 100% !important;
+}
+
+.navbar-brand.navbar-brand-primary:after,
+.navbar-brand.navbar-brand-primary:hover:after {
+    background-color: #2e2e2e;
+}
+
+@media screen and (max-width: 767px) {
+    .navbar-brand.navbar-brand-primary .logo {
+        width: 190px !important;
+    }
+}

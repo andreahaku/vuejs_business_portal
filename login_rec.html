@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html class="st-layout ls-top-navbar-large ls-bottom-footer show-sidebar sidebar-l3" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title id="loginTitle"></title>
+    <link rel='shortcut icon' type='image/x-icon' href='images/applied.ico' />
+    <!-- Template CSS -->
+    <link rel="stylesheet" type="text/css" href="css/all.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/customs/global_login.css">
+    <link rel="stylesheet" type="text/css" href="css/customs/custom_login.css">
+
+
+    <script type="text/javascript" src="//platform.linkedin.com/in.js">
+        api_key: 773wgxa1e73a59
+        onLoad: onLinkedInLoad
+        authorize: true
+    </script>
+</head>
+
+<body class="login" id="sfondo">
+    <div id="content">
+        <div class="container-fluid">
+            <div class="lock-container" style="height: auto">
+                <div class="panel panel-default text-center paper-shadow animated fadeInDown" data-z="0.5">
+                    <h1 class="text-display-1 text-center margin-bottom-none">Login</h1>
+                    <!--<img id="logo" class="img-rounded width-200"> -->
+                    <div class="panel-body" style="z-index: 9999">
+                        <div class="form-group" on>
+                            <div class="form-control-material">
+                                <input class="form-control" id="username" type="text" placeholder="Username" onkeypress="enter(event)" onblur="tryFocusOut('username')"
+                                    value="maicol.buscherini@bkm.it">
+                                <label id="usernameLab" for="username">Nome Utente</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-control-material">
+                                <input class="form-control" id="password" type="password" placeholder="Password" onkeypress="enter(event)" onblur="tryFocusOut('password')"
+                                    value="">
+                                <label id="passwordLab" for="password">Password</label>
+                            </div>
+                        </div>
+                        <div>
+                            <a id="loginBtn" href="#" onclick="login();" class="btn btn-primary" style="z-index: 9999">Accedi
+                                <i class="fa fa-fw fa-unlock-alt"></i>
+                            </a>
+                        </div>
+                        <br/>
+                        <div>
+                            <script type="in/Login"></script>
+                        </div>
+                        <div id="spinner" class='uil-rolling-css' style="display: none; transform: scale(0.15);position: absolute;margin: 0 auto;top: 118px;right: 0px;left: 120px;">
+                            <div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                        <div id="forgot_psw" style="display: none;">
+                            <a href="" onclick="psw_forgot(event)">Hai dimenticato la password?</a>
+                        </div>
+                        <!--
+            <a href=" # " class="forgot-password ">Password dimenticata?</a>
+            <a href="sign-up.html " class="link-text-color ">Crea un account</a>
+             -->
+                        <div class="btn-group dropdown pull-right imp hidden-xs hide-debug ">
+                            <a type="button " class="btn " data-toggle="collapse " data-target="#list " aria-haspopup="true " aria-expanded="false ">
+                                <i class="fa fa-cog fa-2x " aria-hidden="true "></i>
+                            </a>
+                            <ul id="list " class="dropdown-menu pull-right imp-sub ">
+                                <li>
+                                    <div class="checkbox-inline hide-debug ">
+                                        <input id="deb " type="checkbox " value=" " onchange="debugCheck() "> Debug abilitato
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="image_wrapper" style="position: absolute;top: auto;right: auto;top: 0px; left: 0px; margin: 20px 50px; z-index: -1;">
+            <img id="first_logo" class="img-rounded width-300">
+            <img id="second_logo" class="img-rounded width-300">
+        </div>
+        <!-- Modal -->
+        <div class="modal fade animated fadeInDown text-center" id="pswChangeModal" role="dialog" aria-labelledby="myModalLabel"
+            data-backdrop="static">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style="margin-top:100px;">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="myModalLabel">Per proseguire è necessario aggiornare la password</h3>
+                    </div>
+                    <div class="modal-body">
+                        <img id="update" class="img-rounded width-200">
+                        <div class="form-group">
+                            <div class="form-control-material">
+                                <input class="form-control" id="old" type="password" placeholder="vecchia password" onkeypress="enterModal(event)" onblur="tryFocusOut('old')">
+                                <label id="oldLab" for="old">Vecchia Password</label>
+                            </div>
+                        </div>
+                        <div id="oldAlert" class="alert alert-danger alert-dismissible fade in hide" style="padding:8px;" role="alert">
+                            <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">x</span>
+                            </button>
+                            <h4 style="margin-bottom:0px;">Vecchia password non corretta</h4>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-control-material">
+                                <input class="form-control" id="new" type="password" placeholder="nuova password" onkeypress="enterModal(event)" onblur="tryFocusOut('new')">
+                                <label id="newLab" for="old">Nuova Password</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-control-material">
+                                <input class="form-control" id="checkPsw" type="password" placeholder="nuova password" onkeypress="enterModal(event)" onblur="tryFocusOut('checkPsw')">
+                                <label id="checkPswLab" for="old">Conferma Nuova Password</label>
+                            </div>
+                        </div>
+                        <div id="newAlert" class="alert alert-danger alert-dismissible fade in hide" style="padding:8px;" role="alert">
+                            <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">x</span>
+                            </button>
+                            <h4 style="margin-bottom:0px;">Controllo password errato</h4>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="updatePassword()">Invia</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Error Modal -->
+        <div class="modal text-center" id="errorModal" role="dialog" aria-labelledby="myErrLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style="margin-top:50px;">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="myErrLabel">Errore di autenticazione</h2>
+                    </div>
+                    <div id="appendHere" class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer hidden-xs">
+        <strong>Bookmark Srl</strong> &copy; Copyright
+        <span id="copy_year"></span>
+    </footer>
+    <script>
+        var colors = {
+            "danger-color": "#e74c3c",
+            "success-color": "#81b53e",
+            "warning-color": "#f0ad4e",
+            "inverse-color": "#2c3e50",
+            "info-color": "#2d7cb5",
+            "default-color": "#6e7882",
+            "default-light-color": "#cfd9db",
+            "purple-color": "#9D8AC7",
+            "mustard-color": "#d4d171",
+            "lightred-color": "#e15258",
+            "body-bg": "#f6f6f6"
+        };
+        var config = {
+            theme: "html",
+            skins: {
+                "default": {
+                    "primary-color": "#42a5f5"
+                }
+            }
+        };
+    </script>
+    <script type="text/javascript" src="js/all.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/lz-string.js"></script>
+
+    <script>
+        //login rotation vars
+        var folder = 'images/login/'
+        var imgs = [];
+        var imgsCursor = 0;
+        //
+
+        function psw_forgot(e) {
+            e.preventDefault();
+        }
+        $(document).ready(function () {
+            document.getElementById("copy_year").innerHTML = new Date().getFullYear();
+            var oldPsw;
+
+            var last = localStorage.getItem("lastVisited");
+            localStorage.clear();
+            sessionStorage.clear();
+            if (last) {
+                localStorage.setItem("lastFound", last);
+            }
+            localStorage.setItem("debugEnabled", false);
+
+            var BackgroundImg = []
+
+            var isXS = window.innerWidth < 768;
+            var isMobile = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+
+            //rotazione immagini
+            console.log("is xs: " + isXS)
+            console.log("isMobile: " + isMobile)
+            if (!isXS && !isMobile) {
+                $.ajax({
+                    url: folder,
+                    success: function (data) {
+                        var files = data.split('<a href="/images/login/')
+                        files.shift();
+                        //FILES.LENGTH > 0 ? PROD: DIRECTORY LISTING FOUND!
+                        console.log(files.length)
+                        if (files.length > 0) {
+                            //Setup array (estraggo i nomi file - escludo directory indexes)
+                            files.shift();
+                            files = files.map(function (obj) {
+                                return obj.split('"')[0]
+                            })
+                            var index = files.indexOf("indexes/");
+                            if (index != -1) files.splice(index, 1);
+                            imgs = files;
+                            console.log("- listed")
+                            console.log(imgs)
+                            imgsCursor = 0
+                            nextImage()
+                            setInterval(function () {
+                                nextImage()
+                            }, 5000)
+                        } else {
+                            //FILES.LENGTH == 0 ? DEV: DIRECTORY LISTING NOT FOUND!
+                            var xobj2 = new XMLHttpRequest();
+                            xobj2.open('GET', folder + 'indexes/imagesList.txt', false);
+                            xobj2.onreadystatechange = function () {
+                                if (xobj2.readyState == 4 && xobj2.status == "200") {
+                                    // leggo il file con la lista delle immagini di background per la login
+                                    var str = xobj2.responseText
+                                    imgs = str.split('\n')
+                                    // mappo all'interno della directory indexes
+                                    imgs = imgs.map(function (img) {
+                                        return 'indexes/' + img;
+                                    })
+                                }
+                            };
+                            xobj2.send(null);
+                            console.log("- red")
+                            console.log(imgs)
+                            imgsCursor = 0
+                            nextImage()
+                            setInterval(function () {
+                                nextImage()
+                            }, 5000)
+                        }
+                    }
+                })
+            }
+
+            var xobj = new XMLHttpRequest();
+            xobj.overrideMimeType("application/json");
+            xobj.open('GET', 'static/configs.json', false); // Replace 'my_data' with the path to your file
+            xobj.onreadystatechange = function () {
+                if (xobj.readyState == 4 && xobj.status == "200") {
+                    var json = xobj.responseText;
+                    localStorage.setItem("configs", LZString.compressToUTF16(json));
+                    json = JSON.parse(json);
+                    console.log(document.getElementsByClassName("logo"))
+                    if (json.logo_alto && json.logo_alto != '') {
+                        document.getElementById("first_logo").setAttribute("src", json.logo_alto);
+                        document.getElementById("update").setAttribute("src", json.logo_alto);
+                    }
+                    if (json.logo_basso && json.logo_basso != '') {
+                        document.getElementById("second_logo").setAttribute("src", json.logo_basso)
+                    }
+
+                    document.getElementById("loginTitle").innerHTML = json.title + " Login";
+                    if (json.debug != true) {
+                        var hiding = document.getElementsByClassName("hide-debug ");
+                        for (var i = 0; i < hiding.length; i++) {
+                            hiding[0].style.display = 'none';
+                        }
+                    }
+                }
+            };
+            xobj.send(null);
+        });
+
+        var switch_bgpos = true;
+
+        function nextImage() {
+            if (imgsCursor >= imgs.length)
+                imgsCursor = 0
+
+            var xobj = new XMLHttpRequest()
+            xobj.open('GET', folder + imgs[imgsCursor], false);
+            xobj.onreadystatechange = function () {
+                if (xobj.readyState == 4 && xobj.status == "200") {
+                    var str = xobj.responseText
+                    if (str != null) {
+                        $('#sfondo').css('background-image', 'url(' + folder + imgs[imgsCursor] + ')')
+                        var pos = switch_bgpos ? 'center center' : 'left center';
+                        switch_bgpos = !switch_bgpos;
+                        //$('#sfondo').css('background-position', pos)
+                        imgsCursor++;
+                    }
+
+                }
+            };
+            xobj.send(null);
+        }
+
+        function enableInterface() {
+            document.getElementById('spinner').style.display = 'none';
+            document.getElementById('loginBtn').removeAttribute("disabled");
+        }
+
+        function login() {
+            document.getElementById('spinner').style.display = 'block';
+            document.getElementById('loginBtn').setAttribute("disabled", true);
+
+            var utente = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            var path = JSON.parse(LZString.decompressFromUTF16(localStorage.getItem("configs"))).urlApiLearning
+            var url = path + '/Webapi';
+
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", url, true);
+
+            xmlhttp.setRequestHeader("X-HTTP-Method-Override", "GetToken");
+            xmlhttp.setRequestHeader("username", utente);
+
+            xmlhttp.setRequestHeader("password", password);
+            xmlhttp.setRequestHeader("ignoraToken", true);
+            xmlhttp.setRequestHeader("Access-Control-Allow-Origin", '*://*/*');
+
+            xmlhttp.onreadystatechange = function () {
+
+                if (xmlhttp.readyState == 4) {
+                    if (xmlhttp.status == 200) {
+                        // login con successo
+                        var answer = xmlhttp.responseText.split('|');
+                        // token di sessione
+                        var token = answer[0];
+                        // codice per la richiesta di cambio password
+                        var cambio_password = answer[1]
+                        localStorage.setItem("al_token", token);
+                        localStorage.setItem("username", LZString.compressToUTF16(utente));
+                        localStorage.setItem("path", path);
+                        if (answer[4] != null) {
+                            localStorage.setItem("idpersona", answer[4])
+                        }
+
+                        /* --------- TEST FLAG ----------
+                        localStorage.setItem("testing", 1); */
+
+                        if (answer[3] != null) {
+                            if (localStorage.getItem("testing") == 1) {
+                                localStorage.setItem('userAvatar', 'images/profile-photo_small.png');
+                            } else {
+                                localStorage.setItem('userAvatar', path + '/' + answer[3]);
+                            }
+                        } else {
+                            localStorage.setItem('userAvatar', 'images/profile-photo_small.png');
+                        }
+
+                        var TESTING_RECRUITING = true;
+
+                        var IDRTC;
+                        if (cambio_password == 0 || TESTING_RECRUITING) {
+
+                            var enabledOnes = 0;
+                            var conf = JSON.parse(LZString.decompressFromUTF16(localStorage.getItem("configs")));
+                            var profiles = conf.modules;
+
+                            IDRTC = answer[6];
+                            if (answer[7] != null) {
+                                var lang;
+                                if (answer[7] == "ENG") {
+                                    lang = LZString.compressToUTF16("eng");
+                                    localStorage.setItem("lan", lang);
+                                } else if (answer[7] == "ITA") {
+                                    lang = LZString.compressToUTF16("ita");
+                                    localStorage.setItem("lan", lang);
+                                } else {
+                                    setDefaultLang(conf.langs);
+                                }
+                            } else {
+                                setDefaultLang(conf.langs);
+                            }
+
+                            IDRTC = "default";
+
+                            console.log(JSON.stringify(profiles))
+                            console.log("RTC da bo:")
+                            console.log(IDRTC)
+                            //window.alert(IDRTC)
+                            for (var i = 0; i < profiles.length; i++) {
+                                console.log("checking with:")
+                                console.log(profiles[i].rtc)
+                                if (profiles[i].rtc == IDRTC) {
+                                    console.log("found")
+                                    enabledOnes = profiles[i].permissions;
+                                }
+                            }
+                            console.log(enabledOnes)
+                            //BREAK for permissions
+                            //window.alert("Ok")
+
+                            if (enabledOnes != 0) {
+                                var parsing = enabledOnes.toString(2);
+                                var max_length = conf.modules_length;
+                                if (max_length == null) {
+                                    console.log("modules_length not properly defined")
+                                }
+                                var offset = max_length - enabledOnes.toString(2).length;
+
+                                //window.alert("Enabled: " + JSON.stringify(parsing));
+                                if (parsing[0 - offset] === '1') {
+                                    var a = LZString.compressToUTF16("true");
+                                    localStorage.setItem("as", a);
+                                } else {
+                                    var a = LZString.compressToUTF16("false");
+                                    localStorage.setItem("as", a);
+                                }
+                                if (parsing[1 - offset] === '1') {
+                                    var isVal = LZString.compressToUTF16("true");
+                                    localStorage.setItem("isv", isVal);
+                                } else {
+                                    var isVal = LZString.compressToUTF16("false");
+                                    localStorage.setItem("isv", isVal);
+                                }
+
+                                localStorage.setItem("ench", LZString.compressToUTF16(enabledOnes.toString()));
+                                enabledOnes = enabledOnes.toString(2);
+                                conf.modules = enabledOnes;
+                                localStorage.setItem("configs", LZString.compressToUTF16(JSON.stringify(conf)));
+
+                                window.location.href = "index.html";
+                            } else {
+                                // errore di login
+                                document.getElementById("appendHere").innerHTML = "";
+                                var el = document.createElement("H3");
+                                el.textContent = "Profilo non abilitato";
+
+                                document.getElementById("appendHere").appendChild(el);
+                                $("#errorModal").modal('show');
+                            }
+                        } else {
+                            oldPsw = password;
+                            $("#pswChangeModal").modal('show');
+
+                            enableInterface();
+                        }
+                    } else if (xmlhttp.status == 401) {
+                        // errore di login
+                        document.getElementById("appendHere").innerHTML = "";
+                        var el = document.createElement("H3");
+                        el.textContent = xmlhttp.responseText;
+                        if (el.textContent.trim() === "") {
+                            el.textContent = "Auth Error - code 401"
+                        }
+
+                        document.getElementById("appendHere").appendChild(el);
+                        $("#errorModal").modal('show');
+
+                        enableInterface();
+                    } else {
+                        // altri errori
+                        document.getElementById("appendHere").innerHTML = "";
+                        var el = document.createElement("H3");
+                        console.log(xmlhttp.responseText);
+                        if (xmlhttp.responseText.trim() === "") {
+                            xmlhttp.responseText = "Internal Server Error - code 500";
+                        }
+                        el.textContent = xmlhttp.responseText;
+                        document.getElementById("appendHere").appendChild(el);
+                        $("#errorModal").modal('show');
+
+                        enableInterface();
+                    }
+                }
+            }
+            xmlhttp.send(null);
+        }
+
+        function setDefaultLang(langs) {
+
+            for (var i = 0; i < langs.length; i++) {
+                if (langs[i].default) {
+                    var lang = LZString.compressToUTF16(langs[i].cod.toLowerCase());
+                    localStorage.setItem("lan", lang);
+                    break;
+                }
+            }
+        }
+
+        function updatePassword() {
+            if (oldPsw != null) {
+                if (!checkNewPsw()) {
+                    document.getElementById('newAlert').className = 'alert alert-danger alert-dismissible fade in';
+                    document.getElementById('new').value = '';
+                    document.getElementById('checkPsw').value = '';
+                    tryFocusOut('checkPsw');
+                    document.getElementById('new').focus();
+
+                } else {
+                    document.getElementById('newAlert').className = 'alert alert-danger alert-dismissible fade in hide';
+
+                    if (document.getElementById('old').value === oldPsw) {
+                        document.getElementById('oldAlert').className =
+                            'alert alert-danger alert-dismissible fade in hide';
+                        //SENDING NEW PASSWORD
+                        var url = localStorage.getItem("path") + "/Webapi";
+                        var xmlhttp = new XMLHttpRequest();
+                        xmlhttp.open("POST", url, false);
+
+                        xmlhttp.setRequestHeader("X-HTTP-Method-Override", "ModificaPassword");
+                        xmlhttp.setRequestHeader("token", localStorage.getItem("al_token"));
+                        xmlhttp.setRequestHeader("Access-Control-Allow-Origin", '*://*/*');
+
+                        var json = {
+                            Username: LZString.decompressFromUTF16(localStorage.getItem("username")),
+                            NuovaPassword: document.getElementById('new').value
+                        };
+
+                        xmlhttp.send(JSON.stringify(json));
+
+                        var resp = JSON.parse(xmlhttp.responseText);
+
+                        if (xmlhttp.status == 200) {
+
+                            if (resp.Response.Result != "OK") {
+
+                                document.getElementById("appendHere").innerHTML = "";
+                                var el = document.createElement("H3");
+                                el.textContent = resp.Response.Result;
+                                document.getElementById("appendHere").appendChild(el);
+                                $("#errorModal").modal('show');
+                            } else {
+                                $("#pswChangeModal").modal('hide');
+                                window.location.href = "index.html";
+                            }
+
+                        } else {
+                            document.getElementById("appendHere").innerHTML = "";
+                            var el = document.createElement("H3");
+
+                            el.textContent = "Error response status != 200 OK";
+                            document.getElementById("appendHere").appendChild(el);
+                            $("#errorModal").modal('show');
+                        }
+
+
+                    } else {
+                        document.getElementById('old').value = '';
+                        document.getElementById('old').focus();
+                        document.getElementById('oldAlert').className = 'alert alert-danger alert-dismissible fade in';
+                    }
+
+                }
+            } else {
+
+            }
+        }
+
+        function checkNewPsw() {
+            if (document.getElementById('new').value === document.getElementById('checkPsw').value) {
+                return true;
+            }
+            return false;
+        }
+
+        function enter(event) {
+            if (event.keyCode == 13) {
+                login();
+            }
+        }
+
+        function enterModal(event) {
+            if (event.keyCode == 13) {
+                updatePassword();
+            }
+        }
+
+        function debugCheck() {
+
+            localStorage.setItem("debugEnabled", document.getElementById("deb").checked);
+        }
+
+        function tryFocusOut(id) {
+            if (document.getElementById(id).value == "") {
+                document.getElementById(id + "Lab").className = "";
+            } else {
+                document.getElementById(id + "Lab").className = "hidden";
+            }
+        }
+
+        // Setup an event listener to make an API call once auth is complete
+        function onLinkedInLoad() {
+            IN.Event.on(IN, "auth", getProfileData);
+        }
+
+        // Handle the successful return from the API call
+        function onSuccess(data) {
+            console.log(data);
+
+
+            //"https://www.linkedin.com/profile/view?id=AAoAAAF-NSkB06GtDq52DFgQie834X5ScDkZka4&authType=name&authToken=5QtS&trk=api*a4815844*s4758844*"
+
+            // login con successo
+            var dataString = data.siteStandardProfileRequest.url;
+            var url = /(\w+):\/\/([\w.]+)\/(\S*)/;
+            var result = dataString.match(url);
+            var ary = [];
+            if (result != null) {
+                var fullurl = result[0]; // Contains "http://www.esempio.com/~prova"
+                var protocol = result[1]; // Contains "http"
+                var host = result[2]; // Contains "www.esempio.com"
+                var path = result[3]; // Contains "~prova"
+                var tempAry = path.split("?");
+                ary = tempAry[1].split("&");
+            }
+
+            var username = data.firstName + " " + data.lastName;
+            // token di sessione
+            var sessionID = ary[0].split("=")[1];
+            var tokenID = ary[2].split("=")[1];
+            var apiKey = ary[3].split("=")[1];
+            // codice per la richiesta di cambio password
+            var cambio_password = 0;
+            var path = "";
+            var idPersona = null; //data.id;
+
+            localStorage.setItem("al_token", tokenID);
+            localStorage.setItem("username", LZString.compressToUTF16(username));
+            localStorage.setItem("path", path);
+            if (idPersona != null) {
+                localStorage.setItem("idpersona", idPersona)
+            }
+
+            /* --------- TEST FLAG ----------
+            localStorage.setItem("testing", 1); */
+
+            // if (answer[3] != null) {
+            //     if (localStorage.getItem("testing") == 1) {
+            //         localStorage.setItem('userAvatar', 'images/profile-photo_small.png');
+            //     } else {
+            //         localStorage.setItem('userAvatar', path + '/' + answer[3]);
+            //     }
+            // } else {
+            localStorage.setItem('userAvatar', 'images/profile-photo_small.png');
+            // }
+
+            var TESTING_RECRUITING = true;
+
+            var IDRTC;
+            if (cambio_password == 0 || TESTING_RECRUITING) {
+
+                var enabledOnes = 0;
+                var conf = JSON.parse(LZString.decompressFromUTF16(localStorage.getItem("configs")));
+                var profiles = conf.modules;
+
+                // IDRTC = ""; //answer[6];
+                // if (answer[7] != null) {
+                //     var lang;
+                //     if (answer[7] == "ENG") {
+                //         lang = LZString.compressToUTF16("eng");
+                //         localStorage.setItem("lan", lang);
+                //     } else if (answer[7] == "ITA") {
+                //         lang = LZString.compressToUTF16("ita");
+                //         localStorage.setItem("lan", lang);
+                //     } else {
+                //         setDefaultLang(conf.langs);
+                //     }
+                // } else {
+                setDefaultLang(conf.langs);
+                //}
+
+                IDRTC = "default";
+
+                console.log(JSON.stringify(profiles))
+                console.log("RTC da bo:")
+                console.log(IDRTC)
+                //window.alert(IDRTC)
+                for (var i = 0; i < profiles.length; i++) {
+                    console.log("checking with:")
+                    console.log(profiles[i].rtc)
+                    if (profiles[i].rtc == IDRTC) {
+                        console.log("found")
+                        enabledOnes = profiles[i].permissions;
+                    }
+                }
+                console.log(enabledOnes)
+                //BREAK for permissions
+                //window.alert("Ok")
+
+                if (enabledOnes != 0) {
+                    var parsing = enabledOnes.toString(2);
+                    var max_length = conf.modules_length;
+                    if (max_length == null) {
+                        console.log("modules_length not properly defined")
+                    }
+                    var offset = max_length - enabledOnes.toString(2).length;
+
+                    //window.alert("Enabled: " + JSON.stringify(parsing));
+                    if (parsing[0 - offset] === '1') {
+                        var a = LZString.compressToUTF16("true");
+                        localStorage.setItem("as", a);
+                    } else {
+                        var a = LZString.compressToUTF16("false");
+                        localStorage.setItem("as", a);
+                    }
+                    if (parsing[1 - offset] === '1') {
+                        var isVal = LZString.compressToUTF16("true");
+                        localStorage.setItem("isv", isVal);
+                    } else {
+                        var isVal = LZString.compressToUTF16("false");
+                        localStorage.setItem("isv", isVal);
+                    }
+
+                    localStorage.setItem("ench", LZString.compressToUTF16(enabledOnes.toString()));
+                    enabledOnes = enabledOnes.toString(2);
+                    conf.modules = enabledOnes;
+                    localStorage.setItem("configs", LZString.compressToUTF16(JSON.stringify(conf)));
+
+                    window.location.href = "index.html";
+                } else {
+                    // errore di login
+                    document.getElementById("appendHere").innerHTML = "";
+                    var el = document.createElement("H3");
+                    el.textContent = "Profilo non abilitato";
+
+                    document.getElementById("appendHere").appendChild(el);
+                    $("#errorModal").modal('show');
+                }
+            } else {
+                oldPsw = password;
+                $("#pswChangeModal").modal('show');
+
+                enableInterface();
+            }
+        }
+
+        // Handle an error response from the API call
+        function onError(error) {
+            console.log(error);
+        }
+
+        // Use the API call wrapper to request the member's basic profile data
+        function getProfileData() {
+            IN.API.Raw("/people/~").result(onSuccess).error(onError);
+        }
+    </script>
+</body>
+
+</html>

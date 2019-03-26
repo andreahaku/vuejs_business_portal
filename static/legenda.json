@@ -1,0 +1,300 @@
+{}
+/*
+----------------------------  LEGENDA MODULI/PERMESSI ATTIVABILI  ---------------------
+
+P   2^P       - NOME MODULO
+
+0   (1)       - learning
+1   (2)       - recruiting
+2   (4)       - documenti
+3   (8)       - rubrica
+4   (16)      - bip - goal
+5   (32)      - compentenze HITACHI
+6   (64)      - feedback
+7   (128)     - tutor
+8   (256)     - calendar
+9   (512)     - data-collection
+10  (1024)    - compentenze GENERICHE
+11  (2048)    - curriculum vitae
+
+12  (4096)    - valutatore
+13  (8192)    - admin
+
+PREV BOTTOM *
+
+moduli_attivati = [...]
+for i < moduli_attivati.length
+configs.modules.permissions += 2^P(moduli_attivati[i])
+
+--------------------- ESEMPIO ---------------------
+moduli_attivati: learning, rubrica, privilegi da admin, privilegi da tutor
+permissions = 2^0 + 2^3 + 2^8 + 2^9 = 1 + 8 + 256 + 512 = 777
+
+----------------------------------------  CONFIGS --------------------------------------
+
+//HITACHI CONFIGS
+{
+    "urlApiLearning": "http://hitachirailapi.activetrees.it",
+    "urlBase64ToPdf": "",
+    "urlApiRecruiting": "",
+    "notificationPoll": 600000,
+    "title": "Hitachi Rail",
+    "logo": "images/Hitachi_itn.png",
+    "modules": [
+    {
+        "rtc": 1,
+        "permissions": 6176,
+        "how": 32 + 2048 + 4096
+    },
+    {
+        "rtc": 2,
+        "permissions": 32
+    },
+    {
+        "rtc": 3,
+        "permissions": 2080,
+        "how": 32 + 2048
+    }],
+    "langs": [
+    {
+        "cod": "ITA",
+        "nome": "Italiano",
+        "default": true
+    },
+    {
+        "cod": "ENG",
+        "nome": "English"
+    }],
+    "modules_length": 13,
+    "dash":
+    {
+        "sx": ["le tue schede di performance", "ricerca schede valutazione"],
+        "dx": ["schede da valutare"]
+    }
+}
+
+
+{
+  "urlApiLearning": "http://server04:8081/",
+  "urlBase64ToPdf": "http://exjsapi.activetrees.it/",
+  "urlApiRecruiting": "http://webapiextende.activetrees.it/",
+  "notificationPoll": 600000,
+  "title": "Active Trees",
+  "logo_alto": "images/extende.png",
+  "modules": [{
+      "rtc": 4,
+      "permissions": 2433
+    },
+    {
+      "rtc": 3,
+      "permissions": 1
+    },
+    {
+      "rtc": 48,
+      "permissions": 385
+    }
+  ],
+  "langs": [{
+      "cod": "ITA",
+      "nome": "Italiano",
+      "default": true
+    },
+    {
+      "cod": "ENG",
+      "nome": "English"
+    }
+  ],
+  "modules_length": 13,
+  "swpsw": true,
+  "dash": {
+    "sx": ["corsi consigliati", "ricerca partecipazioni"],
+    "dx": ["ricerca corsi", "attività forum", "i miei corsi"]
+  }
+}
+
+//SELEX - API SU DB EXTENDE
+{
+  "urlApiLearning": "http://server04:8081/",
+  "urlBase64ToPdf": "http://exjsapi.activetrees.it/",
+  "urlApiRecruiting": "http://server04:8081/",
+  "notificationPoll": 600000,
+  "title": "Selex Academy",
+  "logo_alto": "images/LOGO_ALTO.png",
+  "logo_basso": "images/LOGO_BASSO.png",
+  "logo_menu": "images/LOGO_MENU.png",
+  "modules": [{
+      "rtc": 4,
+      "permissions": 1
+    },
+    {
+      "rtc": 3,
+      "permissions": 1
+    },
+    {
+      "rtc": 48,
+      "permissions": 1
+    }
+  ],
+  "langs": [{
+      "cod": "ITA",
+      "nome": "Italiano",
+      "default": true
+    },
+    {
+      "cod": "ENG",
+      "nome": "English"
+    }
+  ],
+  "modules_length": 13,
+  "swpsw": true,
+  "dash": {
+    "sx": ["corsi consigliati", "ricerca partecipazioni"],
+    "dx": ["ricerca corsi", "attività forum", "i miei corsi"]
+  }
+}
+
+//BIP CONFIGS OLD
+{
+  "urlApiLearning": "http://13.81.121.28/at_webapi",
+  "urlBase64ToPdf": "",
+  "urlApiRecruiting": "",
+  "notificationPoll": 600000,
+  "title": "BIP Portale",
+  "logo": "images/logoBip.png",
+  "modules": [{
+    "rtc": 1,
+    "permissions": 472
+  }, {
+    "rtc": 10,
+    "permissions": 88
+  }, {
+    "rtc": 11,
+    "permissions": 216
+  }]
+}
+"modules": [{
+  "rtc": 1,
+  "permissions": 888
+}, {
+  "rtc": 10,
+  "permissions": 56
+}, {
+  "rtc": 11,
+  "permissions": 312
+}]
+
+//BIP CONFIGS NEW
+LUANA: "urlApiLearning": "http://DEV46/ATWebAPI/",
+{
+  "urlApiLearning": "http://13.81.121.28/at_webapi/",
+  "urlBase64ToPdf": "",
+  "urlApiRecruiting": "",
+  "notificationPoll": 600000,
+  "title": "BIP Portale",
+  "logo": "images/logoBip.png",
+  "modules": [{
+      "rtc": 1,
+      "permissions": 13328
+    },
+    {
+      "rtc": 8,
+      "permissions": 13400
+    },
+    {
+      "rtc": 10,
+      "permissions": 1040
+    },
+    {
+      "rtc": 11,
+      "permissions": 5136
+    }
+  ],
+  "langs": [{
+      "cod": "ITA",
+      "nome": "Italiano",
+      "default": true
+    },
+    {
+      "cod": "ENG",
+      "nome": "English"
+    }
+  ],
+  "modules_length": 13,
+  "debug": false,
+  "alt": true,
+  "swpsw": false,
+  "forced_expiration": 86400000,
+  "dash": {
+    "sx": ["valutazioni ricevute", "ricerca goal"],
+    "dx": ["valutazioni da effettuare"]
+  }
+}
+
+TEMP TEST {
+  "urlApiLearning": "http://13.69.123.225/at_webapi/",
+  "urlBase64ToPdf": "",
+  "urlApiRecruiting": "",
+  "notificationPoll": 600000,
+  "title": "BIP Portale",
+  "logo": "images/logoBip.png",
+  "modules": [{
+      "rtc": 1,
+      "permissions": 7184
+    },
+    {
+      "rtc": 2,
+      "permissions": 7184
+    },
+    {
+      "rtc": 3,
+      "permissions": 7184
+    },
+    {
+      "rtc": 8,
+      "permissions": 7184
+    },
+    {
+      "rtc": 10,
+      "permissions": 7184
+    },
+    {
+      "rtc": 11,
+      "permissions": 7184
+    }
+  ],
+  "langs": [{
+      "cod": "ITA",
+      "nome": "Italiano",
+      "default": true
+    },
+    {
+      "cod": "ENG",
+      "nome": "English"
+    }
+  ],
+  "modules_length": 13,
+  "alt": true,
+  "dash": {
+    "sx": ["valutazioni ricevute", "ricerca goal"],
+    "dx": ["valutazioni da effettuare"]
+  }
+}
+
+* PREV
+P   2^P       - NOME MODULO
+
+0   (1)       - learning
+1   (2)       - recruiting
+2   (4)       - documenti
+3   (8)       - rubrica
+4   (16)      - bip - goal
+5   (32)      - compentenze HITACHI
+6   (64)      - feedback
+7   (128)     - tutor
+8   (256)     - calendar
+9   (512)     - data-collection
+10  (1024)    - compentenze GENERICHE
+
+11  (2048)    - valutatore
+12  (4096)    - admin
+  /

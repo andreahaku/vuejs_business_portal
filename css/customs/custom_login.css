@@ -1,0 +1,13 @@
+.image_wrapper,
+div.lock-container {
+    width: 400px !important;
+}
+
+.image_wrapper {
+    padding: 50px !important;
+}
+
+div.lock-container {
+    padding: 55px !important;
+    max-width: unset !important;
+}

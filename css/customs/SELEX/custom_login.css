@@ -1,0 +1,96 @@
+body.login .lock-container .panel {
+    max-width: unset !important;
+    box-shadow: none;
+    background-color: transparent;
+    border: none;
+}
+
+body.login .lock-container .panel-body {
+    padding: 0px !important;
+}
+
+body.login .lock-container .panel-body .form-control-material {
+    border-bottom: none;
+    background-color: white;
+    padding: 5px 10px;
+}
+
+body.login .lock-container .panel-body .form-control-material .ma-form-bar::before,
+body.login .lock-container .panel-body .form-control-material .ma-form-bar::after {
+    height: 0px;
+}
+
+body.login .lock-container .panel-body .form-control-material input {
+    padding: 10px 0px 5px 0px;
+}
+
+body.login .lock-container .panel-body .form-control-material input:focus {
+    border-bottom: none !important;
+}
+
+body.login .lock-container .panel-body .form-control-material input::placeholder {
+    color: rgb(118, 113, 113);
+}
+
+body.login .lock-container .panel-body label {
+    display: none;
+}
+
+body.login .lock-container .panel:after {
+    box-shadow: none;
+}
+
+div.lock-container {
+    background-color: rgba(118, 113, 113, 0.86);
+}
+
+h1.text-display-1 {
+    display: none !important;
+}
+
+a#loginBtn {
+    width: 100%;
+    border: 3px solid white;
+    padding: 10px;
+    background-color: transparent;
+    font-size: 26px;
+    font-weight: 300;
+    margin-top: 10px;
+}
+
+a#loginBtn .fa-unlock-alt {
+    display: none;
+}
+
+#spinner {
+    top: 67px !important;
+}
+
+#spinner>div>div {
+    border-color: rgb(200, 0, 53);
+}
+
+#forgot_psw {
+    margin-top: 15px;
+    display: block !important;
+}
+
+#forgot_psw>a {
+    color: white;
+    text-decoration: underline;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 767px) {
+    body {
+        background-color: rgb(200, 0, 53) !important;
+    }
+}
+
+@font-face {
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Condensed'), local('RobotoCondensed-Regular'), url("css/RobotoCondensed.woff2") format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
